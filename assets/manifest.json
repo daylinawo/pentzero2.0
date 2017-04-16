@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "scripts/main.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "styles/main.scss"
+      ],
+      "main": true
+    },
+    "scrollactive.js": {
+      "files": [
+        "scripts/scrollactive.js"
+      ]
+    },
+    "slick-transi.js": {
+      "files": [
+        "scripts/slick-transi.js"
+      ]
+    },
+    "fullwidth.js": {
+      "files": [
+        "scripts/fullwidth.js"
+      ]
+    },
+    "customizer.js": {
+      "files": [
+        "scripts/customizer.js"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    }
+  },
+  "config": {
+    "devUrl": "http://pentzero.dev"
+  }
+}

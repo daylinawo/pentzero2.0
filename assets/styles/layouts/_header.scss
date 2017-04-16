@@ -1,0 +1,231 @@
+
+/*  =====================================================
+		2. MYTHEME HEADER, BANNER, NAVIGATION STYLES
+	=====================================================
+*/
+
+/* ---- HEADER ADVERTISEMENT SPACE ---- */
+
+.m-header.active{
+		position: fixed;
+		top: 0;
+		z-index: 1000;		
+		-webkit-backface-visibility: hidden !important;
+		-webkit-transform: translateZ(0) !important;		
+}
+.m-h--wrapper-nofixed{
+		position: absolute;
+		top: 0;
+}
+.m-header{
+		background-color:#000;
+		width:100%;
+		}
+.l-container{
+	padding: 30px 0;
+	text-align:	center;
+	clear:both;
+}
+.l-c-style{
+	background-color: #222;
+	position: relative;
+	top: 0;
+}
+.l-space{
+	position: absolute;
+	top: 0;
+	box-sizing: border-box;
+	clip: rect(0, auto, auto, 0);
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	padding: 15px;
+	z-index: 1;
+	width:100%;
+	height: 100%;
+}
+.l-block{
+	position: fixed;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width:100% !important;
+}
+
+/* ---- MAIN NAVIGATION ---- */
+
+.navbar{
+		margin: 0 !important;
+		z-index: 4;
+		background-color:#000 !important;
+		border: 0 !important;
+		border-radius: 0px !important;
+		border-bottom: 1px solid #333 !important;
+		border-top: 1px solid #333 !important;
+		padding: 0;
+		padding-left:1.5em;
+		}
+.navbar-brand {
+		padding: 0 !important;
+		margin: 0px 20px 0 0 !important;
+		}
+@media (max-width: 768px) {
+  nav.navbar {
+    background: lightgray;
+  }
+}
+/* change hamburger button border color */
+button.navbar-toggler.navbar-toggler-right {
+  border-color: white;
+}
+.navbar-light span.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  color: white;
+}
+.navbar-nav{	
+		li{
+				text-align:center;
+				border-right: 1px solid #333;
+				}
+		li:first-child{
+				border-left: 1px solid #333;
+		}
+		li a{
+				font-size:16px;
+				color: #fff !important;
+				background-color:#000;
+				text-transform: uppercase;
+				letter-spacing:4px;
+				display:block;
+				text-decoration: none;
+  				padding:20px 10px !important;
+				}
+		li a:hover{
+				color: #000 !important;
+				background-color: #fff !important;
+				}
+		}
+@media (min-width: 768px) {
+
+	.dropdown-searchbox{
+			margin: 14px 0 0 20px;
+		}
+	.dropdown-searchbox ul{
+		background: black;
+		border: 1px solid #333;
+		border-radius: 0;
+	}
+	.dropdown-searchbox ul li{
+		padding:0 5px;
+		border: 0px !important;	
+	}
+
+}		
+.navbar-default .navbar-nav > .active,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+		color: #fff !important;
+		background-color: #000 !important;
+		}
+.dropdown-menu{
+		padding-top:0 !important;
+		}
+.navbar-form{
+	padding-top: 5px !important;
+}
+.media-body{
+    vertical-align: middle !important;
+}
+.social li{
+		float:left;
+		text-decoration: none;
+		list-style: none;
+		border: 0 !important;
+		a{
+			font-size: 18px;
+		}
+		a:hover{
+			background-color:transparent !important;
+			color:$primary-color;
+		}
+}
+a.ic{
+	display:block;
+	background:url("/app/themes/thepenttheme/assets/images/socialmedia.png");
+	height: 19px;
+	background-repeat: no-repeat;
+	margin-left:20px;
+
+}
+a.ic-facebook{
+		background-position: 0px 0px;
+		width: 29px;
+}
+a.ic-twitter{
+		background-position: -29px 0px;
+		width: 29px;
+}
+a.ic-youtube{
+		background-position: -58px 0px;
+		width: 29px;
+}
+a.ic-instagram{
+		background-position: -87px 0px;
+		width: 29px;
+}
+@media (min-width:768px){
+		/* ----VERTICALLY CENTERING TABLE ELEMENTS---- */
+		.navbar-nav li > ul{
+				border: 0;
+				background-color: transparent;
+				min-height:40px;
+				box-shadow:none;
+				}	
+		.navbar-nav li > ul li{
+				width:100%;
+				border-top: 1px solid #333;
+				border-bottom: 1px solid #333;
+				}
+		.navbar-nav li:hover > ul{
+				display:block;
+				}
+	}
+.btn-primary{
+	background-color:#000 !important;
+	border-color:#333 !important;
+}
+.form-control, .btn{
+	border-radius: 0 !important;
+}
+/* ---- MAIN RECOMMENDED POSTS ---- */
+
+.d-recommended{
+		background-color: #111;
+		}
+.row-span{
+		margin-top:20px;
+		background-color:#000;
+		padding: 7px 0 0 0;
+		border: 1px solid #292929
+		}
+#recommended-posts .blog-item{
+		margin-bottom: 10% !important;
+		}
+.info{
+	padding-top: 10px;
+}
+.info .entry-header a{
+		color: #d6d6d6;
+		}	
+.info time{
+		color:#888;
+		}
+.thumbnail-img{
+
+		}
+@media (min-width:0px) and (max-width:767px) {
+		.m-hide{
+				display:none;
+				}
+		}
