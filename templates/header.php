@@ -1,13 +1,13 @@
 
 <header class="m-header" role="banner">
-
+<!-- PROMOTIONAL AD 1 -->
 <div class="l-container l-c-style" style="height:272px; width:100%; background-color:#000;">
   <div class="l-space">
       <div class="l-block" style="height:272px; width:300px; display: inline-block;">
                 <img src="/app/themes/thepenttheme/assets/images/pageadvert1.jpg" maxwidth="80%" style="margin:auto; display:block;\" />
       </div>
   </div>
-</div>
+</div><!-- END PROMOTIONAL AD 1 -->
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

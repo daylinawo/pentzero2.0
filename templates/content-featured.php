@@ -16,28 +16,31 @@
 
                       <?php             
                        $the_post_type = get_post_type();
-
-                      switch ($the_post_type){
-                        case 'videos':
-                          print '<span class="post-type fa fa-play"></span>';
-                          break;
-                        case 'gallery':
-                          print '<span class="post-type fa fa-camera"></span>';
-                          break;
-                        default: 
-                          print 'nothing.';
-                          break;
-                      }
                       ?>
                 <? echo $perma['after'];
             } // closing if statement parentheses
             ?>
              </div>
     
-        <header class="l-p-info">   
+  <? if($the_post_type == "videos"):?>
+        <header class="l-p-info video-info mt-1"> 
+        <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
+             <div class="col-12 pt-2" >
               <?php the_title( sprintf('<a href="%s">', esc_url(get_permalink() ) ),'</a>'); ?> 
+                   <?php echo '<a href="'.esc_url(get_permalink() ).'" class="play-bttn" ><span class="fa fa-play"></span></a>'; ?>
+            </div>
+        </div> 
         </header>
 
+      <? elseif($the_post_type == "gallery"):?>
+        <header class="l-p-info gallery-info mt-1"> 
+        <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
+             <div class="col-12 pt-2" >
+              <?php the_title( sprintf('<a href="%s">', esc_url(get_permalink() ) ),'</a>'); ?> 
+            </div>
+        </div> 
+        </header>
+            <? endif; ?>
     </div>
 </article>
 
