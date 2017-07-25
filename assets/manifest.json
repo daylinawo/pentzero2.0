@@ -17,6 +17,16 @@
         "scripts/scrollactive.js"
       ]
     },
+    "fullscreensearch.js": {
+      "files": [
+        "scripts/fullscreensearch.js"
+      ]
+    },
+    "scrollactive_posts.js": {
+      "files": [
+        "scripts/scrollactive_posts.js"
+      ]
+    },
     "slick-transi.js": {
       "files": [
         "scripts/slick-transi.js"

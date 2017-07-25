@@ -94,9 +94,16 @@ function widgets_init() {
     'before_widget' => '<li id="%1$s" class="widget %2$s">',
     'after_widget' => '</li>',
     'before_title' => '<h2 class="widgettitle">',
-    'after_title' => '</h2>',
+    'after_title' => '</h2>'
   ]);
-
+    register_sidebar([
+    'name' => "Post Page Ads",
+    'id' => 'post-page-ad',
+    'before_widget' => '<li id="%1$s" class="widget %2$s">',
+    'after_widget' => '</li>',
+    'before_title' => '<h2 class="widgettitle">',
+    'after_title' => '</h2>'
+  ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
 
@@ -128,9 +135,13 @@ function assets() {
   }
   if(is_front_page() ){
     wp_enqueue_script('sage/fullwidth_js', Assets\asset_path('scripts/fullwidth.js'), ['sage/js'], null, true);
+    wp_enqueue_script('sage/scrollactive_js', Assets\asset_path('scripts/scrollactive.js'), ['sage/js'], null, true);
+
+  }else{
+    wp_enqueue_script('sage/scrollactive_posts_js', Assets\asset_path('scripts/scrollactive_posts.js'), ['sage/js'], null, true);
   } 
-  wp_enqueue_script('sage/scrollactive_js', Assets\asset_path('scripts/scrollactive.js'), ['sage/js'], null, true);
-  wp_enqueue_style('google_fonts', '//fonts.googleapis.com/css?family=Playfair+Display:400,700|Poppins:400,500,600|Oswald|Abril+Fatface', null, true);
+  wp_enqueue_script('sage/fullscreensearch_js', Assets\asset_path('scripts/fullscreensearch.js'), ['sage/js'], null, true);
+  wp_enqueue_style('google_fonts', '//fonts.googleapis.com/css?family=Playfair+Display:400,700|Poppins:300,400,500,600|Oswald', null, true);
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

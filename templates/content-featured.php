@@ -1,8 +1,11 @@
+<?php
+            $the_post_type = get_post_type();
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+?>
+    <div class="blog-item mb-5">
+    <?php echo '<a href="'.esc_url(get_permalink() ).'" class="post-box" style="display:block; width:auto;">'; ?>
 
-    <div class="blog-item">
-      
+
         <?php if(has_post_thumbnail() ){ 
               $perma = array(
               'before' => '<a href="'.esc_url(get_permalink() ).'" class="overlay">',
@@ -11,37 +14,61 @@
             ?> 
 
             <div class="thumbnail-img">
-                  <? the_post_thumbnail('full', array( 'class'  => 'img' ) );  ?>
-                      <? echo $perma['before']; ?>
-
-                      <?php             
-                       $the_post_type = get_post_type();
-                      ?>
-                <? echo $perma['after'];
+                  <? the_post_thumbnail('full', array( 'class'  => 'img' ) );
             } // closing if statement parentheses
             ?>
-             </div>
-    
-  <? if($the_post_type == "videos"):?>
-        <header class="l-p-info video-info mt-1"> 
-        <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
-             <div class="col-12 pt-2" >
-              <?php the_title( sprintf('<a href="%s">', esc_url(get_permalink() ) ),'</a>'); ?> 
-                   <?php echo '<a href="'.esc_url(get_permalink() ).'" class="play-bttn" ><span class="fa fa-play"></span></a>'; ?>
-            </div>
-        </div> 
-        </header>
+            <? if($the_post_type == "videos"):?>
+                  <div class="overlay"><div class="thumb-icon"><span class="fa fa-play"></span></div></div>
+            <? elseif($the_post_type == "gallery"): ?>
+                  <div class="overlay"><div class="thumb-icon"><span class="fa fa-camera"></span></div></div>
+            <? endif; ?> 
+          </div>
 
+      <!-- IF POST_CAT IS VIDEOS -->
+            <? if($the_post_type == "videos"):?>
+        <!-- VIDEO INFO -->
+        <header class="l-p-info video-info mt-3"> 
+        <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
+            <div class="col-12">
+            <div class="row">
+                  <div class="col-12 m-0">
+                    <?php the_title( sprintf('<p class="vid-title" href="%s">', esc_url(get_permalink() ) ),'</p>'); ?> 
+                  </div>
+                  <!-- MORE INFO -->
+                  <div class="more col-12 m-0">
+                      <p style="font-size:11px;">
+                        <span style="font-family: Playfair Display;">by</span>
+                        <span style="">Nnendi Afori</span>
+                      </p>
+                  </div> <!-- END MORE INFO -->
+            </div>
+           </div>
+        </div> 
+        </header>  <!-- END VIDEO INFO -->
+    <!-- END IF POST_CAT IS VIDEO -->
+
+      <!-- IF POST_CAT IS GALLERY -->
       <? elseif($the_post_type == "gallery"):?>
-        <header class="l-p-info gallery-info mt-1"> 
+       
+<!-- VIDEO INFO -->
+        <header class="l-p-info gallery-info mt-3"> 
         <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
-             <div class="col-12 pt-2" >
-              <?php the_title( sprintf('<a href="%s">', esc_url(get_permalink() ) ),'</a>'); ?> 
+            <div class="col-12">
+            <div class="row">
+                  <div class="col-12 m-0">
+                    <?php the_title( sprintf('<p class="vid-title" href="%s">', esc_url(get_permalink() ) ),'</p>'); ?> 
+                  </div>
+                  <!-- MORE INFO -->
+                  <div class="more col-12 m-0">
+                      <p style="font-size: 11px;">
+                        <span style="font-family: Playfair Display;"> by</span>
+                        <span>Samuel L Johnson</span>
+                      </p>
+                  </div> <!-- END MORE INFO -->
             </div>
+           </div>
         </div> 
-        </header>
+        </header>  <!-- END VIDEO INFO -->
             <? endif; ?>
+</a>
     </div>
-</article>
-
-<!-- <span class="post-type icon icon-camera"><img src="/app/themes/thepenttheme/assets/images/Camera_icon.png" width="25" height="17"></span> -->

@@ -1,6 +1,6 @@
-<footer class="content-info">
-  <div class="container">
-  	<div class="row">
+<footer class="content-info" >
+  <div class="container" >
+  	<div class="row" >
   		<div class="col-sm-4">
     		<p>Privacy Policy</p>
     	</div>
