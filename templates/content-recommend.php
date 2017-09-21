@@ -1,38 +1,49 @@
 <!-- RECOMMENDED POST -->
-<?php
-            $the_post_type = get_post_type();
+<?php 
+
+  $the_post_type = get_post_type(); 
+  $icon = "";
+  $author = "";
+  $category = "";
+  $post_date = get_the_date('j F y');
+
+  if($the_post_type == "videos"):
+      $icon = "play";
+      $author = "Pentzero";
+  elseif ($the_post_type == "gallery"):
+      $icon = "clone";
+      $author = "Pentzero";
+  endif;
+
+  if (has_category()){
+       $category = get_the_category();
+       $category = $category[0]->cat_name;      
+      }
 
 ?>
-          <li class="col-2">  
-            <?php echo '<a href="'.esc_url(get_permalink() ).'" class="post-box" style="display:block; width:auto;">'; ?>    
-            <?php if(has_post_thumbnail() ){ 
-                  $perma = array(
-                  'before' => '<a href="'.esc_url(get_permalink() ).'">',
-                  'after' => '</a>',
-                  ); // If thumbnail found: link the thumbnail to post page
-                ?> 
-                <div class="thumbnail-img">
-                      <? the_post_thumbnail('full', array( 'class'  => 'img' ) );
-                    } // closing if statement parentheses
-                   ?>
-            <? if($the_post_type == "videos"):?>
-                  <div class="overlay"><div class="thumb-icon"><span class="fa fa-play"></span></div></div>
-            <? elseif($the_post_type == "gallery"): ?>
-                  <div class="overlay"><div class="thumb-icon"><span class="fa fa-camera"></span></div></div>
-            <? endif; ?>
-              </div>
-                <div class="caption-box">
-                    <header class="r-p-info video-info mt-2"> 
-                    <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
-                      <div class="col-12 m-0">
-                        <?php the_title( sprintf('<p class="vid-title" href="%s">', esc_url(get_permalink() ) ),'</p>'); ?> 
-                            <p style="font-size: 11px;" class="more">
-                                <span style="font-family: Playfair Display; padding: 0;">by</span>
-                                <span style="padding: 0;">Nnendi Afori</span>
-                            </p>
-                      </div>
-                    </div> 
-                    </header>  <!-- END VIDEO INFO -->
-                </div>
-            </a>
-          </li>
+<article class="b-post">    
+  <?php echo '<a href="'.esc_url(get_permalink() ).'" class="b-post__link b-post__link--article"></a>'; ?> 
+  <!-- THUMBNAIL -->
+  <div class="b-post__thumbnail">
+    <? the_post_thumbnail('full', array( 'class'  => 'img' ) ); ?>
+    <div class="b-post__thumbnail--overlay"></div>
+    <div class="b-post__thumbnail--icon"><span class="fa fa-<? echo $icon; ?>"></span></div>
+  </div>
+  <!-- POST INFO -->
+  <div class="b-post__info d-flex flex-column align-items-start no-gutters">
+    <header class="b-post__info--header"> 
+      <ul class="global__list-reset b-post__info__meta b-post__info__meta__header" style="float: left; display: block;">
+        <li class="b-post__info__meta-item b-post__info__meta-item--post-cat"> <span><? echo $category ?></span></li>
+        <li class="b-post__info__meta-item b-post__info__meta-item--date"><span><? echo $post_date; ?></span></li>
+      </ul>
+      <div class="clear"></div>
+      <?php the_title('<p class="b-post__info--post-title">', '</p>'); ?> 
+    </header>  
+    <footer class="b-post__info__footer mt-auto">
+      <ul class="global__list-reset b-post__info__meta">
+        <li class="b-post__info__meta-item b-post__info__meta-item--views"><span class="fa fa-eye"></span><span> 184,600</span></li>
+      </ul>
+    </footer>
+  </div>
+</article>
+

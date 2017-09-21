@@ -1,16 +1,15 @@
 jQuery(document).ready(function($){
 $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    if(scroll > 272){
-        $(".m-header").addClass("active");
+    if(scroll > 123){
+        $(".m-header, #search").addClass("active");
         $(".m-header").removeClass("m-h--wrapper-nofixed");
-        $(".m-header").css({"top":"-272px"});
+        $(".m-header").css({"top":"-123px"});
     }
     else{
-        $(".m-header").removeClass("active");
+        $(".m-header, #search").removeClass("active");
         $(".m-header").addClass("m-h--wrapper-nofixed");
         $(".m-header").css({"top":""});
-
     }
 });
 });

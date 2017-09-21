@@ -1,74 +1,48 @@
-<?php
-            $the_post_type = get_post_type();
+<?php 
+  $the_post_type = get_post_type(); 
+  $icon = "";
+  $author = "";
+  $category = "";
+  $post_date = get_the_date('j F y');
 
+  if($the_post_type == "videos"):
+      $icon = "play";
+      $author = "Pentzero";
+  elseif ($the_post_type == "gallery"):
+      $icon = "clone";
+      $author = "Pentzero";
+  endif;
+
+  if (has_category()){
+       $category = get_the_category();
+       $category = $category[0]->cat_name;      
+      }
 ?>
-    <div class="blog-item mb-5">
-    <?php echo '<a href="'.esc_url(get_permalink() ).'" class="post-box" style="display:block; width:auto;">'; ?>
-
-
-        <?php if(has_post_thumbnail() ){ 
-              $perma = array(
-              'before' => '<a href="'.esc_url(get_permalink() ).'" class="overlay">',
-              'after' => '</a>',
-              );
-            ?> 
-
-            <div class="thumbnail-img">
-                  <? the_post_thumbnail('full', array( 'class'  => 'img' ) );
-            } // closing if statement parentheses
-            ?>
-            <? if($the_post_type == "videos"):?>
-                  <div class="overlay"><div class="thumb-icon"><span class="fa fa-play"></span></div></div>
-            <? elseif($the_post_type == "gallery"): ?>
-                  <div class="overlay"><div class="thumb-icon"><span class="fa fa-camera"></span></div></div>
-            <? endif; ?> 
-          </div>
-
-      <!-- IF POST_CAT IS VIDEOS -->
-            <? if($the_post_type == "videos"):?>
-        <!-- VIDEO INFO -->
-        <header class="l-p-info video-info mt-3"> 
-        <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
-            <div class="col-12">
-            <div class="row">
-                  <div class="col-12 m-0">
-                    <?php the_title( sprintf('<p class="vid-title" href="%s">', esc_url(get_permalink() ) ),'</p>'); ?> 
-                  </div>
-                  <!-- MORE INFO -->
-                  <div class="more col-12 m-0">
-                      <p style="font-size:11px;">
-                        <span style="font-family: Playfair Display;">by</span>
-                        <span style="">Nnendi Afori</span>
-                      </p>
-                  </div> <!-- END MORE INFO -->
-            </div>
-           </div>
-        </div> 
-        </header>  <!-- END VIDEO INFO -->
-    <!-- END IF POST_CAT IS VIDEO -->
-
-      <!-- IF POST_CAT IS GALLERY -->
-      <? elseif($the_post_type == "gallery"):?>
-       
-<!-- VIDEO INFO -->
-        <header class="l-p-info gallery-info mt-3"> 
-        <div class="d-flex flex-column no-gutters" style="height: 100%; position: relative;">  
-            <div class="col-12">
-            <div class="row">
-                  <div class="col-12 m-0">
-                    <?php the_title( sprintf('<p class="vid-title" href="%s">', esc_url(get_permalink() ) ),'</p>'); ?> 
-                  </div>
-                  <!-- MORE INFO -->
-                  <div class="more col-12 m-0">
-                      <p style="font-size: 11px;">
-                        <span style="font-family: Playfair Display;"> by</span>
-                        <span>Samuel L Johnson</span>
-                      </p>
-                  </div> <!-- END MORE INFO -->
-            </div>
-           </div>
-        </div> 
-        </header>  <!-- END VIDEO INFO -->
-            <? endif; ?>
-</a>
-    </div>
+    
+<article class="b-post">    
+  <?php echo '<a href="'.esc_url(get_permalink() ).'" class="b-post__link b-post__link--article"></a>'; ?> 
+  <!-- THUMBNAIL -->
+  <div class="b-post__thumbnail">
+    <? the_post_thumbnail('full', array( 'class'  => 'img' ) ); ?>
+    <div class="b-post__thumbnail--overlay"></div>
+    <div class="b-post__thumbnail--icon"><span class="fa fa-<? echo $icon; ?>"></span></div>
+  </div>
+  <!-- POST INFO -->
+  <div class="b-post__info d-flex flex-column align-items-start no-gutters">
+    <header class="b-post__info--header"> 
+      <ul class="global__list-reset b-post__info__meta b-post__info__meta__header" style="float: left; display: block;">
+        <li class="b-post__info__meta-item b-post__info__meta-item--post-cat"> <span><? echo $category ?></span></li>
+       <li class="b-post__info__meta-item b-post__info__meta-item--date"><span><? echo $post_date; ?></span></li>
+      </ul>
+      <div class="clear"></div>
+      <?php the_title('<p class="b-post__info--post-title">', '</p>'); ?> 
+    </header>  
+    <footer class="b-post__info__footer mt-auto">
+      <ul class="global__list-reset b-post__info__meta b-post__info__meta__footer" style="float: left; display: block;">
+        <li class="b-post__info__meta-item b-post__info__meta-item--views"><span class="fa fa-eye"></span><span> 184,600</span></li>
+        <li class="b-post__info__meta-item b-post__info__meta-item--comments"><span class="fa fa-comments"></span><span> 26</span></li>
+      </ul>
+        <div class="clear"></div>
+    </footer>
+  </div>
+</article>

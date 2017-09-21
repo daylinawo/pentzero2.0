@@ -64,11 +64,11 @@ function widgets_init() {
     'after_title'   => '</h3>'
   ]);
   register_sidebar([
-    'name'          => __('Latest Posts Sidebar', 'sage'),
-    'id'            => 'sidebar-latest',
+    'name'          => __('Footer', 'sage'),
+    'id'            => 'sidebar-footer',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h3 class="psb-head">',
+    'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
   register_sidebar([
@@ -79,17 +79,9 @@ function widgets_init() {
     'before_title'  => '<h3 class="psb-head">',
     'after_title'   => '</h3>'
   ]);
-  register_sidebar([
-    'name'          => __('Footer', 'sage'),
-    'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>'
-  ]);
     register_sidebar([
-    'name' => "Banner Ads Home",
-    'id' => 'banner-ads-home',
+    'name' => "Homepage Banner Ad",
+    'id' => 'banner-ads__home',
     'description' => "Widgets will be displayed after every 16th post",
     'before_widget' => '<li id="%1$s" class="widget %2$s">',
     'after_widget' => '</li>',
@@ -97,8 +89,8 @@ function widgets_init() {
     'after_title' => '</h2>'
   ]);
     register_sidebar([
-    'name' => "Post Page Ads",
-    'id' => 'post-page-ad',
+    'name' => "Post Page Ad",
+    'id' => 'ads__post-page',
     'before_widget' => '<li id="%1$s" class="widget %2$s">',
     'after_widget' => '</li>',
     'before_title' => '<h2 class="widgettitle">',
@@ -141,7 +133,7 @@ function assets() {
     wp_enqueue_script('sage/scrollactive_posts_js', Assets\asset_path('scripts/scrollactive_posts.js'), ['sage/js'], null, true);
   } 
   wp_enqueue_script('sage/fullscreensearch_js', Assets\asset_path('scripts/fullscreensearch.js'), ['sage/js'], null, true);
-  wp_enqueue_style('google_fonts', '//fonts.googleapis.com/css?family=Playfair+Display:400,700|Poppins:300,400,500,600|Oswald', null, true);
+  wp_enqueue_style('google_fonts', '//fonts.googleapis.com/css?family=Poppins:300,400,500,600|Quicksand:400,500,700|Oswald:400,500,600|', null, true);
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

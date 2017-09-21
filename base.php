@@ -6,7 +6,7 @@ use Roots\Sage\Wrapper;
 ?>
 
 <!doctype html>
-<html <?php language_attributes(); ?> style=<?php if( is_front_page() ): echo  "\"padding-top: 334px;\""; endif;?> >
+<html <?php language_attributes(); ?> style=<?php if( is_front_page() ): echo  "\"padding-top: 123px;\""; endif;?> >
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
     <!--[if IE]>
@@ -18,8 +18,8 @@ use Roots\Sage\Wrapper;
       do_action('get_header');
       get_template_part('templates/header');
     ?>
-    <div class="wrap container-fluid" role="document">
-      <div class="content row">
+    <div class="wrap" role="document">
+      <div class="content">
         <main class="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
