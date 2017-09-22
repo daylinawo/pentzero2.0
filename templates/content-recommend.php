@@ -1,4 +1,4 @@
-<!-- RECOMMENDED POST -->
+<!-- Recommended Post -->
 <?php 
 
   $the_post_type = get_post_type(); 
@@ -23,27 +23,32 @@
 ?>
 <article class="b-post">    
   <?php echo '<a href="'.esc_url(get_permalink() ).'" class="b-post__link b-post__link--article"></a>'; ?> 
-  <!-- THUMBNAIL -->
-  <div class="b-post__thumbnail">
-    <? the_post_thumbnail('full', array( 'class'  => 'img' ) ); ?>
-    <div class="b-post__thumbnail--overlay"></div>
-    <div class="b-post__thumbnail--icon"><span class="fa fa-<? echo $icon; ?>"></span></div>
-  </div>
-  <!-- POST INFO -->
-  <div class="b-post__info d-flex flex-column align-items-start no-gutters">
-    <header class="b-post__info--header"> 
-      <ul class="global__list-reset b-post__info__meta b-post__info__meta__header" style="float: left; display: block;">
-        <li class="b-post__info__meta-item b-post__info__meta-item--post-cat"> <span><? echo $category ?></span></li>
-        <li class="b-post__info__meta-item b-post__info__meta-item--date"><span><? echo $post_date; ?></span></li>
-      </ul>
-      <div class="clear"></div>
-      <?php the_title('<p class="b-post__info--post-title">', '</p>'); ?> 
-    </header>  
-    <footer class="b-post__info__footer mt-auto">
-      <ul class="global__list-reset b-post__info__meta">
-        <li class="b-post__info__meta-item b-post__info__meta-item--views"><span class="fa fa-eye"></span><span> 184,600</span></li>
-      </ul>
-    </footer>
+  <div class="b-post__obj row">
+    <!-- Thumb -->
+    <div class="b-post__obj__header col-6 col-md-12 ">
+      <div class="b-post__thumb">
+        <? the_post_thumbnail('full', array( 'class'  => 'img' ) ); ?>
+        <div class="b-post__thumb--icon"><span class="fa fa-<? echo $icon; ?>"></span></div>
+      </div>
+    </div>
+    <!-- Info -->
+    <div class="b-post__obj__body col-6 col-md-12">
+        <header class="b-post__header"> 
+          <ul class="global__list-reset b-post__meta b-post__meta__header">
+            <li class="b-post__meta-item b-post__meta-item--post-cat"> <span><? echo $category ?></span></li>
+            <li class="b-post__meta-item b-post__meta-item--date"><span><? echo $post_date; ?></span></li>
+          </ul>
+          <div class="clear"></div>
+          <?php the_title('<p class="b-post__post-title">', '</p>'); ?> 
+        </header> 
+
+        <footer class="b-post__footer mt-auto">
+          <ul class="global__list-reset b-post__meta b-post__meta__footer">
+            <li class="b-post__meta-item b-post__meta-item--views"><span class="fa fa-eye"></span><span> 184,600</span></li>
+            <li class="b-post__meta-item b-post__meta-item--comments"><span class="fa fa-comments"></span><span> 26</span></li>
+          </ul>
+          <div class="clear"></div>
+        </footer>
+    </div>
   </div>
 </article>
-
