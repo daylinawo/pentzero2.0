@@ -1,7 +1,5 @@
-  var container = document.getElementById('video_container');
-  var video = document.getElementById('video');
-  var playButton = document.getElementById('play-pause');
-  var ratio = 9/16; //this is why the 56.25% padding hack exists
+var container = document.getElementById('video-container');
+var ratio = 9/16; //this is why the 56.25% padding hack exists
 
 function resizer() {
     var width = parseInt(window.getComputedStyle(container).width, 10);
@@ -14,16 +12,29 @@ function resizer() {
     container.style.height = (height * 0.725) + 'px'; //0.88 was the magic number that you needed to shrink the height of the outer container with.
 }
 
-  video.addEventListener("click", function(e) {
-  if (video.paused == true) {
-    // Play the video
-    video.play();
+var vid, playbtn;
 
+function initializePlayer(){
+  // Set object references
+  vid = document.getElementById('video');
+  playbtn = document.getElementById('playpausebtn');
+
+  // Add event listeners
+  vid.addEventListener("click",playPause,false)
+}
+
+window.onload = initializePlayer;
+
+function playPause(){
+
+  if(vid.paused){
+    vid.play();
+    playbtn.childNodes[0].setAttribute('class', 'fa fa-pause');
   } else {
-    // Pause the video
-    video.pause();
+    vid.pause();
+    playbtn.childNodes[0].setAttribute('class', 'fa fa-play');
   }
-});
+}
 
 //attach event on resize
 window.addEventListener('resize', resizer, false);

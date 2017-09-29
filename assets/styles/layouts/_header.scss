@@ -332,9 +332,33 @@ button.navbar-toggler.navbar-toggler-right {
 =====================================================
 */
 
-.trending-stories {
-  padding: 30px 60px; 
+
+.trending-stories{
+  padding: 10px 60px;  
+  height: 180px;
   background-color: #222222;
+  
+  h2{
+    font-size: 1em !important;
+    text-align: left;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: Poppins !important;
+    color: #ffffff;
+  }
+  .b-post__obj__body {
+    padding-top: 0 !important;
+  }
+  .b-post__header{ width: 100%; }
+  .b-posts-list__item { margin-bottom: 0px !important; }
+  .b-posts-list__item .img { max-width: 150% !important; }
+  .b-post__thumb { padding-top: 100%; border-radius: 100%; }
+  .b-post__post-title { font-size: 0.8em !important; margin-top: 0.2em; color: #ffffff; }
+  .b-post__meta__footer {
+      border-top: 1px solid #333 !important;
+      li:not(:first-child) { border-left: 1px solid #333 !important; }
+  }
 }
 
 .row-span {
@@ -345,6 +369,10 @@ button.navbar-toggler.navbar-toggler-right {
 }
 
 #myCarousel {
+
+  &.carousel {
+    margin: auto;
+  }
 
   ul.thumbnails {
     list-style: none;
@@ -369,7 +397,7 @@ button.navbar-toggler.navbar-toggler-right {
     border: 0px;
     border-radius: 0px;
     display: inline-block;
-    font-size: 84px;
+   /* font-size: 84px; */
     font-weight: 200;
     opacity: 0.6;
     padding: 6px 10px;

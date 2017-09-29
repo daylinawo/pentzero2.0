@@ -120,3 +120,4 @@ function custom_field_excerpt() {
   }
   return apply_filters('the_excerpt', $text);
 }
+

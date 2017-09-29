@@ -15,8 +15,10 @@
 						<div class="featured-video__overlay">
 							<div class="featured-video__overlay__content">
 								<div class="featured-video__icon"><span class="fa fa-play"></span></div>
-								<h3 class="featured-video__title">Money on my Mind</h3>
-								<p class="featured-video__byline">Nines</p>
+								<div class="featured-video__video-title">
+									<h3 class="featured-video__title">Money on my Mind</h3>
+									<p class="featured-video__byline">Nines</p>
+								</div>
 							</div>
 						</div>
 					</a>
@@ -28,8 +30,10 @@
 						<div class="featured-video__thumb__overlay">
 							<div class="featured-video__overlay__content">
 								<div class="featured-video__icon "><span class="fa fa-play"></span></div>
-								<h3 class="featured-video__title">Champions Freestyle</h3>
-								<p class="featured-video__byline">Teyana Taylor</p>
+								<div class="featured-video__video-title">
+									<h3 class="featured-video__title">Champions Freestyle</h3>
+									<p class="featured-video__byline">Teyana Taylor</p>
+								</div>
 							</div>
 						</div>
 					</a>
@@ -40,16 +44,15 @@
 	<?php endif?>
 
 	<!-- BEGIN LATEST POSTS SECTION -->
-	<section class="b-posts-section homepage">
-		<div class="container">
-			<header class="header-block with-line"><h2><span>Latest Updates</span></h2></header>
-			<div class="row">
-				<div class="col-12 p-0">
-					<ul class="global__list-reset b-posts-list row gutter-20"><!-- FIRST SET OF LATEST UPDATES -->
 				  	<?php
+				  	if($paged == 1):
+				  		$ppp = 28;
+				  	else: 
+				  		$ppp = 12;
+				  	endif;
 				  		$args = array(
 				  			'post_type'=> array('videos', 'gallery'), // type of posts to be displayed
-				  			'posts_per_page' => 30,	// number of posts per page
+				  			'posts_per_page' => $ppp,	// number of posts per page
 				  			'paged' => $paged, // current page
 				  			);
 
@@ -89,67 +92,113 @@
 			  			if($postsQuery->have_posts() ): $i = 0; $date_check = "";
 
 			  				while($postsQuery->have_posts() ): $postsQuery->the_post();
-
-					  				if($i <= 3): 
+					  				
+				  				$col_lg = 3;
+								$col_md = 4;
+			  					$widget_interval = 12; // After how many posts a banner ad is displayed thereafter
+							  		
+			  					if($paged == 1):
+							  		if($i <= 3): 
 					  					$col_lg = 3;
 					  					$col_md = 6;
 					  					$widget_interval = 4; // After how many posts the 1st banner ad is displayed
-					  				elseif($i > 5 && $i <= 17):
-										$col_lg = 3;
-										$col_md = 4;
-					  					$widget_interval = 18; // After how many posts a banner ad is displayed thereafter
-					  				else: 
-					  					$col_lg = 3;
-					  					$col_md = 4;
-					  					$widget_interval = 30; // After how many posts a banner ad is displayed thereafter
 					  				endif;
 
 					  				if($i > 3):
-					  					$latest_posts_sidebar = array( 
+					  					$b_posts_sidebar = array( 
 					  						'before_widget' => "<div class=\"b-posts__sidebar hidden-md-down col-lg-3 pr-0\">",
 					  						'after_widget' => "</div>"
 					  						);
 					  				endif;
-
-					  				// POST DATE
-					  				if($i >= 4):
-					  					$date = get_the_date('j F Y'); 
-				  							if($date != $date_check): // Check whether date of next post is different from date of last post, then output new date.
-					  							?>	
-					  						<section class="b-posts-section homepage">
-			  									<div class="container">
-			  										<div class="row">
-			  											<div class="col-md-12 col-lg-9 p-0">
-					  					 					<ul class="global__list-reset b-posts-list row gutter-20">
-					  			<?			  	$date_check = $date;
-					  						endif;
-					  				endif; // END POST DATE
+					  			else:
+			  						$b_posts_sidebar = array( 
+			  						'before_widget' => "<div class=\"b-posts__sidebar hidden-md-down col-lg-3 pr-0\">",
+			  						'after_widget' => "</div>"
+			  						);
+					  			endif;
 				  				?>
+
+				  				<? if($paged == 1): ?>
+					  				<? if ($i == 0): ?>
+										<section class="b-posts-section homepage">
+										<div class="container">
+										<header class="header-block with-line"><h2><span>Latest Updates</span></h2></header>
+										<div class="row">
+										<div class="col-12 p-0">
+										<ul class="global__list-reset b-posts-list row gutter-20">
+			  					 	<? elseif ($i > 3 && (($i + 1) - 5) % $widget_interval === 0): ?>
+										<section class="b-posts-section homepage">
+		  								<div class="container">
+		  								<div class="row">
+		  								<div class="col-md-12 col-lg-9 p-0">
+				  					 	<ul class="global__list-reset b-posts-list row gutter-20">
+			  					 	<? endif ?>
+			  					<? else: ?> 
+			  						<? if($i % $widget_interval === 0): ?>
+			  							<section class="b-posts-section homepage" <? if($i == 0){ ?> style="margin-top:120px !important;" <? } ?>>
+		  								<div class="container">
+		  								<div class="row">
+		  								<div class="col-md-12 col-lg-9 p-0">
+				  					 	<ul class="global__list-reset b-posts-list row gutter-20">	
+				  					<? endif; ?>	
+				  				<? endif; ?>
 									<li class="b-posts-list__item col-sm-12 col-md-<? echo $col_md; ?> col-lg-<? echo $col_lg; ?> "> 
 										<? get_template_part('templates/content', 'featured'); ?>
 									</li>
 					<?php 
-								$i++; 
-				                if (!empty($sidebar_elements) && $i % $widget_interval === 0):
+				                if (!empty($sidebar_elements)):
+					            	 if( $wp_query->max_num_pages == get_query_var('paged') ):
+					            	 	if(($wp_query->current_post + 1) == ($wp_query->post_count) && ($i + 1) % $widget_interval != 0 ):
 
-					            	echo '</ul></div>';
-					            	if (isset($latest_posts_sidebar)): 
-					            		echo $latest_posts_sidebar['before_widget']; 
-					            	    	dynamic_sidebar('sidebar-primary'); 
-					            	    echo $latest_posts_sidebar['after_widget'];
-					            	endif;
+					            	 	echo '</ul></div>';
+							            	if (isset($b_posts_sidebar)): 
+							            		echo $b_posts_sidebar['before_widget']; 
+							            	    	dynamic_sidebar('sidebar-primary'); 
+							            	    echo $b_posts_sidebar['after_widget'];
+							            	endif;
+							            	echo '</div></section>'; // CLOSE BLOG POSTS SECTION
 
-					            	echo '</div></section>'; // CLOSE LATEST POSTS SECTION
+						                    echo $sidebar_elements[$bannerad_count]; // Output the widget
+						                    $bannerad_count++;
 
-				                    echo $sidebar_elements[$bannerad_count]; // Output the widget
-				                    $bannerad_count++;
+						                    // Restart after the last widget
+						                    if ($bannerad_count == count($sidebar_elements)):
+						                        $bannerad_count = 0;
+						                    endif;
+						                endif;    
+									endif;
 
-				                    // Restart after the last widget
-				                    if ($bannerad_count == count($sidebar_elements)):
-				                        $bannerad_count = 0;
-				                    endif;
+						            if($paged == 1):							            	
+										if(($i + 1) <= 3 && ($i + 1) % $widget_interval === 0 || ($i + 1) > 3 && (($i + 1) - 4) % $widget_interval === 0):
+									    	echo '</ul></div>';
+									        if( ($i + 1) > 3 && (($i + 1) - 4) % $widget_interval === 0 && isset($b_posts_sidebar)):
+									    		echo $b_posts_sidebar['before_widget']; 
+									    	    	dynamic_sidebar('sidebar-primary'); 
+									    	    echo $b_posts_sidebar['after_widget'];
+									        endif;
+									    	echo '</div></section>'; // CLOSE BLOG POSTS SECTION								   
+									        echo $sidebar_elements[$bannerad_count]; // Output the widget	
+									    endif;  
+									else:
+										if( ($i + 1) % $widget_interval === 0):
+									    	echo '</ul></div>';
+									    	if (isset($b_posts_sidebar)): 
+									    		echo $b_posts_sidebar['before_widget']; 
+									    	    	dynamic_sidebar('sidebar-primary'); 
+									    	    echo $b_posts_sidebar['after_widget'];
+									    	endif;
+									    	echo '</div></section>'; // CLOSE BLOG POSTS SECTION
+									    endif;
+									endif;
 
-				                endif;
+									$bannerad_count++;
+
+									// Restart after the last widget
+									if ($bannerad_count == count($sidebar_elements)):
+									    $bannerad_count = 0;
+									endif;
+				              	endif;
+				            $i++; 
 							endwhile; 
 						endif;
 						?>
