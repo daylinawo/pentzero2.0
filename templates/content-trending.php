@@ -25,13 +25,13 @@
   <?php echo '<a href="'.esc_url(get_permalink() ).'" class="b-post__link b-post__link--article"></a>'; ?> 
   <div class="b-post__obj row">
     <!-- Thumb -->
-    <div class="b-post__obj__header col-6 col-md-4">
+    <div class="b-post__obj__header col-6 col-md-3">
       <div class="b-post__thumb">
         <? the_post_thumbnail('full', array( 'class'  => 'img' ) ); ?>
       </div>
     </div>
     <!-- Info -->
-    <div class="b-post__obj__body col-6 col-md-8 pl-0">
+    <div class="b-post__obj__body col-6 col-md-9 pl-0">
         <header class="b-post__header"> 
           <ul class="global__list-reset b-post__meta b-post__meta__header">
             <li class="b-post__meta-item b-post__meta-item--post-cat"> <span><? echo $category ?></span></li>

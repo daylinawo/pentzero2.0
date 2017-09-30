@@ -1,4 +1,4 @@
-<aside class="trending-stories">
+<aside class="trending-stories hidden-md-down">
   <div class="container">
     
     <header class="header-block row">

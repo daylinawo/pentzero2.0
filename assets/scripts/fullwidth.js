@@ -17,10 +17,14 @@ var vid, playbtn;
 function initializePlayer(){
   // Set object references
   vid = document.getElementById('video');
-  playbtn = document.getElementById('playpausebtn');
-
+  playbtn = document.getElementById('video__play_pause_btn');
+  overlay = document.getElementById('video__overlay');
   // Add event listeners
-  vid.addEventListener("click",playPause,false)
+  overlay.addEventListener("click",function(e){
+   e.preventDefault(); // Cancel the native event
+   e.stopPropagation();// Don't bubble/capture the event
+   playPause(); // Run video play pause function
+}, false)
 }
 
 window.onload = initializePlayer;

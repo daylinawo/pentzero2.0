@@ -326,6 +326,60 @@ button.navbar-toggler.navbar-toggler-right {
   color: $primary-color;
 }
 
+// 
+// === 3. FULL WIDTH VIDEO ===
+//
+
+.video-controls-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  cursor:pointer;
+}
+
+.video-container {
+  margin-top: 60px;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.video-container video {
+  width: 100%;
+  z-index: -1;
+}
+.video__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.video__play-pause-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #ffffff;
+  background: rgba(#967F64, 0.8);
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0px;  
+  font-size: 1.3em;
+  opacity: 0;
+  @extend .transition;
+}
+.video__play-pause-btn:focus {
+  outline: none;
+}
+.video-controls-container:hover .video__play-pause-btn {
+  opacity: 1;
+}
+
 /*  
 =====================================================
 			3. RECOMMENDED POSTS CAROUSEL
@@ -347,20 +401,25 @@ button.navbar-toggler.navbar-toggler-right {
     font-family: Poppins !important;
     color: #ffffff;
   }
-  .b-post__obj__body {
-    padding-top: 0 !important;
-  }
+
+  .b-post__obj__body { padding-top: 0 !important; }
   .b-post__header{ width: 100%; }
+
   .b-posts-list__item { margin-bottom: 0px !important; }
   .b-posts-list__item .img { max-width: 150% !important; }
+  
   .b-post__thumb { padding-top: 100%; border-radius: 100%; }
-  .b-post__post-title { font-size: 0.8em !important; margin-top: 0.2em; color: #ffffff; }
+  
+  .b-post__post-title { font-size: 0.75em !important; margin-top: 0.2em; color: #ffffff;}
+  
   .b-post__meta__footer {
       border-top: 1px solid #333 !important;
       li:not(:first-child) { border-left: 1px solid #333 !important; }
   }
 }
-
+.b-posts-list--trending-stories {
+  width: 100%;
+}
 .row-span {
   margin-top: 20px;
   background-color: #000000;
