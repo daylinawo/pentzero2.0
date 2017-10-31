@@ -7,9 +7,6 @@
   </div>
   <a href="#" id="video__overlay" class="video__overlay"></a>
   <button id="video__play_pause_btn" class="video__play-pause-btn"><i class="fa fa-pause"></i></button>
-</div>
+</div><!-- END LARGE FEATURED VIDEO -->
 
-<? $paged = (get_query_var('page')) ? get_query_var('page') : 1;?>
-<? if( !is_paged() ): // If page 1 ?>
-  <? get_template_part('templates/sidebar', 'trending'); ?>
-<? endif; ?>
+<?php get_template_part('templates/sidebar', 'trending'); ?>

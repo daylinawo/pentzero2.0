@@ -3,14 +3,12 @@
   $icon = "";
   $author = "";
   $category = "";
-  $post_date = get_the_date('j F y');
+  $post_date = get_the_date('j F Y');
 
   if($the_post_type == "videos"):
       $icon = "play";
-      $author = "Pentzero";
   elseif ($the_post_type == "gallery"):
       $icon = "clone";
-      $author = "Pentzero";
   endif;
 
   if (has_category()){

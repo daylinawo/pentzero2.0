@@ -4,44 +4,50 @@ YARPP Template: Thumbnails
 Description: Requires a theme which supports post thumbnails
 Author: mitcho (Michael Yoshitaka Erlewine)
 */ ?>
-<?php if (have_posts()):
 
-	$the_post_type = get_post_type();
-
-?>
-	<h2 class="psb-head">Recommended Posts</h2>
-<ol class="recommended-posts">
-	<?php while (have_posts()) : the_post(); ?>
-		<li>
-			<a class="post-box" href="<?php the_permalink() ?>" el="bookmark" title="<?php the_title_attribute(); ?>">
-			<?php if (has_post_thumbnail()):?>
-				<div class="rpthumb">
-					<?php the_post_thumbnail('yarpp-thumbnail'); ?>
-					<? if($the_post_type == "videos"):?>
-                  		<div class="overlay"><div class="thumb-icon"><span class="fa fa-play"></span></div></div>
-          		  	<? elseif($the_post_type == "gallery"): ?>
-                 		 <div class="overlay"><div class="thumb-icon"><span class="fa fa-camera"></span></div></div>
-          		  	<? endif; ?>
-				</div>
-			<?php endif; ?>
-			<h3 class="rp-title">
-
-					<?php 
-						if (strlen($post->post_title) > 45){
-      				 		echo substr($post->post_title, 0, 45) . '...';
-      					}
-   				 		else{
-      			 			the_title();
-      			 		} 
-      			 	?>
-			</h3>
-			<p class="m-0"><time class="updated"  datetime="<?= get_post_time('c', true); ?>"><?= get_the_date('d M Y'); ?></time></p>
-			<div class="clear"></div>
-			</a>
-		</li>
-	<?php endwhile; ?>
-</ol>
-
+<?php if (have_posts()):?>
+<h3 class="sidebar-related-posts__title">More Posts Like This</h3>
+<div class="sidebar-related-posts__list">
+	<ol class="global__list-reset b-posts-list b-posts-list--related-posts">
+		<?php while (have_posts()) : the_post(); 
+			$the_post_type = get_post_type();
+			$icon = "";
+			if($the_post_type == "videos"):
+			  $icon = "play";
+			elseif ($the_post_type == "gallery"):
+			  $icon = "clone";
+			endif;
+		?>
+			<li class="b-posts-list__item">
+				<article class="b-post b-post--related">    
+					<a href="<?php the_permalink() ?>" class="b-post__link b-post__link--article" el="bookmark"></a>
+					<div class="b-post__obj row">
+						<!-- Thumb -->
+						<div class="b-post__obj__header col-6 col-md-6">	
+							<?php if (has_post_thumbnail()):?>
+						 		<div class="b-post__thumb">	
+									<? the_post_thumbnail('full', array( 'class'  => 'img' ) ); ?>
+									<div class="b-post__thumb--icon"><span class="fa fa-<? echo $icon; ?>"></span></div>
+						  		</div>
+						  	<?php endif; ?>
+						</div>
+						<!-- Info -->
+						<div class="b-post__obj__body col-6 col-md-6 pl-0">
+						    <header class="b-post__header"> 
+						    	<?php the_title('<p class="b-post__post-title">', '</p>'); ?> 
+								<ul class="global__list-reset b-post__meta">
+									<li class="b-post__meta-item b-post__meta-item--views"><span>615K views</span></li>
+									<li class="b-post__meta-item b-post__meta-item--date"><span><?php echo meks_time_ago(); ?></span></li>
+								</ul>
+						    </header> 
+						</div>
+					</div>
+				</article>
+				<div class="clear"></div>
+			</li>
+		<?php endwhile; ?>
+	</ol>
+</div>
 <?php else: ?>
 <p>No related photos.</p>
 <?php endif; ?>

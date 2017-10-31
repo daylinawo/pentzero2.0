@@ -72,19 +72,19 @@ function widgets_init() {
     'after_title'   => '</h3>'
   ]);
   register_sidebar([
-    'name'          => __('Recommended Posts Sidebar', 'sage'),
-    'id'            => 'sidebar-recommend',
-    'before_widget' => '<section class="widget %1$s %2$s">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h3 class="psb-head">',
+    'name'          => __('Related Posts Sidebar', 'sage'),
+    'id'            => 'sidebar-related-posts',
+    'before_widget' => '<aside class="sidebar-related-posts widget %1$s %2$s">',
+    'after_widget'  => '</aside>',
+    'before_title'  => '<h3 class="sidebar-related-posts__title">',
     'after_title'   => '</h3>'
   ]);
     register_sidebar([
     'name' => "Homepage Banner Ad",
     'id' => 'banner-ads__home',
     'description' => "Widgets will be displayed after every 16th post",
-    'before_widget' => '<li id="%1$s" class="widget %2$s">',
-    'after_widget' => '</li>',
+    'before_widget' => '<aside class="widget %2$s">',
+    'after_widget' => '</aside>',
     'before_title' => '<h2 class="widgettitle">',
     'after_title' => '</h2>'
   ]);
@@ -128,12 +128,12 @@ function assets() {
   if(is_front_page() ){
     wp_enqueue_script('sage/fullwidth_js', Assets\asset_path('scripts/fullwidth.js'), ['sage/js'], null, true);
     wp_enqueue_script('sage/scrollactive_js', Assets\asset_path('scripts/scrollactive.js'), ['sage/js'], null, true);
-
   }else{
     wp_enqueue_script('sage/scrollactive_posts_js', Assets\asset_path('scripts/scrollactive_posts.js'), ['sage/js'], null, true);
   } 
   wp_enqueue_script('sage/fullscreensearch_js', Assets\asset_path('scripts/fullscreensearch.js'), ['sage/js'], null, true);
-  wp_enqueue_style('google_fonts', '//fonts.googleapis.com/css?family=Poppins:300,400,500,600|Quicksand:400,500,700|Oswald:400,500,600|', null, true);
+  wp_enqueue_style('google_fonts', '//fonts.googleapis.com/css?family=Poppins:300,400,500,600|Oswald:400,500,600|', null, true);
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+ 

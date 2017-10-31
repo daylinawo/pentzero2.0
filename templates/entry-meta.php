@@ -1,4 +1,9 @@
-<ul class="post-meta m-0 p-0">
-	<li><p class="byline author vcard"><span><?= __('by', 'sage'); ?></span> <span rel="author" class="fn"><?= get_the_author(); ?></span></p></li>
-	<li><p class="post-page--time"><time datetime="<?= get_post_time('c', true); ?>"><?= get_the_date('d M Y'); ?></time></p></li>
-</ul> <div class="clear"></div>
+<?php 
+$category = get_the_category();
+$firstCategory = $category[0]->cat_name;
+?>
+<ul class="global__list-reset p-header__meta ">
+	<li class="p-header__meta-item p-header__meta-item--category"><span><? echo $firstCategory; ?></span></li>
+	<li class="p-header__meta-item p-header__meta-item--date"><span><time datetime="<?= get_post_time('c', true); ?>"><?= get_the_date('d M Y'); ?></time></span></li>
+</ul>
+<div class="clear"></div>

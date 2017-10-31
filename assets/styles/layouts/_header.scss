@@ -72,7 +72,6 @@
 
 
 
-
 /*  
 =====================================================
 					2. NAVIGATION
@@ -388,29 +387,37 @@ button.navbar-toggler.navbar-toggler-right {
 
 
 .trending-stories{
-  padding: 10px 60px;  
-  height: 180px;
+  position: relative;
   background-color: #222222;
+  border-top: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  padding: 0 60px;
   
-  h2{
-    font-size: 1em !important;
-    text-align: left;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-family: Poppins !important;
+.trending-stories__title{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    right: 0;
+    writing-mode: vertical-lr;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
     color: #ffffff;
+    font-family: oswald;
+    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .b-post__obj__body { padding-top: 0 !important; }
-  .b-post__header{ width: 100%; }
+  .b-post__header{ width: 100%; margin: 10px 0;}
 
   .b-posts-list__item { margin-bottom: 0px !important; }
-  .b-posts-list__item .img { max-width: 150% !important; }
+  .b-posts-list__item .img { max-width: 200% !important; }
   
-  .b-post__thumb { padding-top: 100%; border-radius: 100%; }
-  
-  .b-post__post-title { font-size: 0.75em !important; margin-top: 0.2em; color: #ffffff;}
+  .b-post__thumb { padding-top: 100%; border-radius: 50%; margin: 10px 0;}
+
+  .b-post__post-title { font-size: 0.75em !important; margin-top: 0.2em; margin-bottom: 0; color: #ffffff;}
   
   .b-post__meta__footer {
       border-top: 1px solid #333 !important;
@@ -448,30 +455,33 @@ button.navbar-toggler.navbar-toggler-right {
   .btn.btn-mini {
     font-size: 0.63rem;
   }
-  .control-box {
-    width: 100%;
-    position: absolute;
-  }
-  .carousel-control {
-    border: 0px;
-    border-radius: 0px;
-    display: inline-block;
-   /* font-size: 84px; */
-    font-weight: 200;
-    opacity: 0.6;
-    padding: 6px 10px;
-    margin: 0 -45px 0;
-    height: 30px;
-    width: 30px;
-    -webkit-transition: all 250ms ease-out;
-    -moz-transition: all 250ms ease-out;
-    -ms-transition: all 250ms ease-;
-    -o-transition: all 250ms ease;
-    transition: all 250ms ease;
-  }
   .carousel-control:hover {
     opacity: 1;
     text-decoration: none;
+  }
+ 
+  .carousel-control-next, .carousel-control-prev{
+    width: 60px;
+    height: 50%;
+    right: -60px;
+    border-left: 1px solid #333333;
+    -webkit-transition: all 250ms ease-out;
+    -moz-transition: all 250ms ease-out;
+    -ms-transition: all 250ms ease-out;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+  }
+  .carousel-control-next{
+    top: 0;
+    border-bottom: 1px solid #333333;
+  }
+  .carousel-control-prev{
+    top: 50%;
+    left: auto !important;
+  } 
+  .carousel-indicators {
+    bottom: -40px;
+    margin: 0;
   }
 }
 

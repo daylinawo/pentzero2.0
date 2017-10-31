@@ -8,7 +8,7 @@
         </div>
       </div>
     </div><!-- END PROMOTIONAL AD 1 -->
-  <? endif; ?>
+  <?php endif; ?>
 
   <nav class="navbar navbar-toggleable-md navbar-light" role="navigation">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@
     <? $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
     <? $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' ); 
         if ( has_custom_logo() ) {
-            echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand"><img src="'.esc_url( $logo[0] ).'" alt="Pentzero logo" ></a>';
+            echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand mr-auto w-50 d-flex"><img src="'.esc_url( $logo[0] ).'" alt="Pentzero logo" ></a>';
         } else {
             echo '<h1>'. esc_attr( get_bloginfo( 'name' ) ) .'</h1>';
             } ?>
@@ -27,16 +27,12 @@
           wp_nav_menu([
           'theme_location' => 'primary_navigation',
           'walker' => new wp_bootstrap_navwalker(),
-          'menu_class' => 'nav navbar-nav'
+          'menu_class' => 'navbar-nav mx-auto w-100 justify-content-center',
+          'container' => false
           ]);
-          endif; ?> 
-      <!-- <ul id="menu-main-social-media-links" class="nav navbar-nav social ">
-          <li><a href="#" class="fa fa-facebook-f"></a></li>
-          <li><a href="#" class="fa fa-twitter"></a></li>
-          <li><a href="#" class="fa fa-youtube"></a></li>
-          <li><a href="#" class="fa fa-instagram"></a></li>
-      </ul> -->
-      <ul class="nav navbar-nav">
+          endif; 
+      ?>
+      <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
         <li class="navbar-nav__search">
           <a href="#search" class="navbar-nav__search__icon"></a>
           <a href="#" class="navbar-nav__search__close-icon hidden"></a>

@@ -121,3 +121,8 @@ function custom_field_excerpt() {
   return apply_filters('the_excerpt', $text);
 }
 
+/* Function which displays your post date in time ago format */
+function meks_time_ago() {
+  return human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ).' '.__( 'ago' );
+}
+

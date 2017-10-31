@@ -1,16 +1,10 @@
 <aside class="trending-stories hidden-md-down">
-  <div class="container">
-    
-    <header class="header-block row">
-      <div class="col-sm-12 p-0"> 
-        <h2>What's Trending?</h2>
-      </div>
-    </header>
-
+  <p class="trending-stories__title">Trending</p>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-12 p-0">
-        <div id="myCarousel" class="trending-stories__slide row carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
             <!-- Wrapper for slides -->
             <?php 
             $args = array( 
@@ -32,7 +26,7 @@
                   <div class="carousel-item">
                     <ul class="global__list-reset b-posts-list b-posts-list--trending-stories">
                       <div class="row">              
-              <? endif ?>
+              <? endif; ?>
                         <li class="b-posts-list__item col-md-12 col-lg-3 col-xl-3">
                           <? get_template_part('templates/content', 'trending'); ?>
                         </li>
@@ -40,24 +34,23 @@
                       </div>
                     </ul>
                   </div>
-              <? endif; ?>
-
-            <?  $i++; 
-              endwhile;
-            endif; 
-            wp_reset_postdata();
-            ?>
-          </div>
-          <!-- Control box -->
-          <div class="control-box">                            
-            <a class="carousel-control left" href="#myCarousel" role="button" data-slide="prev">
-              <img src="/app/themes/pentzero2.0/assets/images/left-arrow.png" style="width:auto; !important" width="40" height="42">
-            </a>
-            <a class="carousel-control right" href="#myCarousel" role="button" data-slide="next">
-              <img src="/app/themes/pentzero2.0/assets/images/right-arrow.png"  style="width:auto; !important" width="40" height="42">
-            </a>
-          </div> 
+                 <? endif; ?>
+              <? $i++; ?>
+            <? endwhile; ?>
+          <? endif; ?>
+          <? wp_reset_postdata(); ?>
+          </div> <!-- end carousel inner -->
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          
         </div>
-      </div>
-    </div>
+      </div>    
+    </div>  
+  </div>    
 </aside>
