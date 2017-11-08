@@ -14,7 +14,7 @@ $loop = new WP_Query ($args);
 	<div class="container-fluid">
 		<div class="row">
 			<?php  while ( $loop->have_posts() ) : $loop->the_post(); ?>
-				<div class="b-featured-video col-md-12 col-lg-6 p-0">
+				<div class="b-featured-video col-sm-12 col-md-6 p-0">
 					<a rel="wp-video-lightbox" href="<? the_field('featured_video_url'); ?>" class="b-featured-video__thumb">
 						<? the_post_thumbnail('full', array( 'class'  => 'video_lightbox_anchor_image' ) ); ?>
 						<div class="b-featured-video__overlay">

@@ -9,7 +9,6 @@
       </div>
     </div><!-- END PROMOTIONAL AD 1 -->
   <?php endif; ?>
-
   <nav class="navbar navbar-toggleable-md navbar-light" role="navigation">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,7 +33,7 @@
       ?>
       <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
         <li class="navbar-nav__search">
-          <a href="#search" class="navbar-nav__search__icon"></a>
+          <a href="#" class="navbar-nav__search__icon"></a>
           <a href="#" class="navbar-nav__search__close-icon hidden"></a>
         </li>
       </ul>
@@ -42,12 +41,8 @@
   </nav>
 </header>
 
-<div id="search">
-  <div class="srch-container">
-    <form role="search" action="<?php bloginfo('url'); ?>" method="get">
-      <input class="srch-textbox" type="search" value="" name="q" placeholder="Search" autocomplete="off" />
-    </form>
-  </div>  
+<div id="n-search">
+  <?php get_search_form(); ?>
 </div>
 
 <?php

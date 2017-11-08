@@ -17,10 +17,9 @@
       }
 ?>
     
-<article class="b-post">    
+<article <?php post_class( 'b-post' ); ?>>    
   <?php echo '<a href="'.esc_url(get_permalink() ).'" class="b-post__link b-post__link--article"></a>'; ?> 
-  <div class="b-post__obj row">
-
+  <div class="b-post__obj row align-items-center">
     <!-- Thumb -->
     <div class="b-post__obj__header col-6 col-md-12 ">
       <div class="b-post__thumb">
@@ -47,6 +46,7 @@
           <div class="clear"></div>
         </footer>
     </div>
-
   </div>
 </article>
+
+
