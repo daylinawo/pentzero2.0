@@ -1,14 +1,13 @@
 <aside class="trending-stories hidden-md-down">
-  <p class="trending-stories__title">Trending</p>
+  <h4 class="trending-stories__title">Trending</h4>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-12 p-0">
+      <div class="col p-0">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner" role="listbox">
-            <!-- Wrapper for slides -->
             <?php 
             $args = array( 
-            'post_type' => array('videos','gallery'),
+            'post_type' => array('video','gallery', 'article'),
             'posts_per_page' => 12,
             'orderby' => 'rand',
             );
@@ -39,7 +38,7 @@
             <? endwhile; ?>
           <? endif; ?>
           <? wp_reset_postdata(); ?>
-          </div> <!-- end carousel inner -->
+          </div> 
           <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -48,7 +47,6 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-          
         </div>
       </div>    
     </div>  

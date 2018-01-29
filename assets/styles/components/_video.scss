@@ -34,7 +34,7 @@ $center-big-play-button: true; // true default
   font-size: 10px;
 
   /* The main font color changes the ICON COLORS as well as the text */
-  color: $primary-foreground-color;
+  color: #fff;
 }
 
 /* The "Big Play Button" is the play button that shows before the video plays.
@@ -63,7 +63,7 @@ $center-big-play-button: true; // true default
   border: 0em solid $primary-foreground-color;
   /* 0.3em = 9px default */
   border-radius: 3em;
-
+  display: none;
   @if $center-big-play-button {
     /* Align center */
     left: 50%;
@@ -109,17 +109,17 @@ $slider-bg-color: lighten($primary-background-color, 33%);
 /* The main progress bar also has a bar that shows how much has been loaded. */
 .video-js .vjs-load-progress {
   /* For IE8 we'll lighten the color */
-  background: lighten($slider-bg-color, 25%);
+  background: lighten($primary-foreground-color, 25%);
   /* Otherwise we'll rely on stacked opacities */
-  background: rgba($slider-bg-color, 0.5);
+  background: rgba($primary-foreground-color, 0.5);
 }
 
 /* The load progress bar also has internal divs that represent
    smaller disconnected loaded time ranges */
 .video-js .vjs-load-progress div {
   /* For IE8 we'll lighten the color */
-  background: lighten($slider-bg-color, 50%);
+  background: lighten($primary-foreground-color, 50%);
   /* Otherwise we'll rely on stacked opacities */
-  background: rgba($slider-bg-color, 0.75);
+  background: rgba($primary-foreground-color, 0.75);
 }
 

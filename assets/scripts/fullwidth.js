@@ -1,30 +1,30 @@
-var container = document.getElementById('video-container');
+var container = document.getElementById('fw-video-wrapper');
 var ratio = 9/16; //this is why the 56.25% padding hack exists
+var vid = document.getElementById('fw-video');  
 
 function resizer() {
     var width = parseInt(window.getComputedStyle(container).width, 10);
     var height = (width * ratio);
     
-    video.style.width = width + 'px';
-    video.style.height = height + 'px';
-    video.style.marginTop = '-8%'; //~732px wide, the video border is about 24px thick (24/732)
+    vid.style.width = width + 'px';
+    vid.style.height = height + 'px';
+    // video.style.marginTop = '-2%'; //~732px wide, the video border is about 24px thick (24/732)
     
-    container.style.height = (height * 0.725) + 'px'; //0.88 was the magic number that you needed to shrink the height of the outer container with.
+    container.style.height = (height * 0.96) + 'px'; //0.88 was the magic number that you needed to shrink the height of the outer container with.
 }
 
-var vid, playbtn;
+var control;
 
 function initializePlayer(){
   // Set object references
-  vid = document.getElementById('video');
-  playbtn = document.getElementById('video__play_pause_btn');
-  overlay = document.getElementById('video__overlay');
+  var overlay = document.getElementById('fw-video-overlay');
+  control = document.getElementById('fw-video-player-control');
   // Add event listeners
   overlay.addEventListener("click",function(e){
    e.preventDefault(); // Cancel the native event
    e.stopPropagation();// Don't bubble/capture the event
    playPause(); // Run video play pause function
-}, false)
+  }, false);
 }
 
 window.onload = initializePlayer;
@@ -33,17 +33,38 @@ function playPause(){
 
   if(vid.paused){
     vid.play();
-    playbtn.childNodes[0].setAttribute('class', 'fa fa-pause');
+    control.style.opacity = "0";
   } else {
     vid.pause();
-    playbtn.childNodes[0].setAttribute('class', 'fa fa-play');
+    control.style.opacity = "1";
+  }
+} 
+
+var breakPoint = 992;
+var wasPlaying = false;
+
+function stopVideo(){
+  if (window.innerWidth < breakPoint){
+    if(!vid.paused){
+      vid.pause();
+      wasPlaying = true;
+    }
+  } else {
+    if(wasPlaying){
+      vid.play();
+      wasPlaying = false;
+    }
   }
 }
-
 //attach event on resize
-window.addEventListener('resize', resizer, false);
+window.onresize = function(){
+  resizer();
+  stopVideo();
+};
 
 //call function for initial sizing
 //no need for padding hack since we are setting the height based off of the width * aspect ratio
 resizer();
+stopVideo();
+
 //container.style.padding = 0;

@@ -1,19 +1,17 @@
 <?php 
-  $the_post_type = get_post_type();   
-  $post_date = get_the_date('j F Y');
-  $icon = "";
-  $category = "";
+use Roots\Sage\Extras;
 
-  if($the_post_type == "videos"):
-      $icon = "play";
-  elseif ($the_post_type == "gallery"):
-      $icon = "clone";
-  endif;
+$post_type = get_post_type(); 
 
-  if (has_category()){
-       $category = get_the_category();
-       $category = $category[0]->cat_name;      
-      }
+$icon = Extras\get_post_type_icon($post_type);
+
+// Get first category from post category
+if (has_category()){
+      $category = get_the_category();
+      $category = $category[0]->cat_name;
+    } else {
+      $category = "";
+    }
 ?>
 
 <article <?php post_class( 'b-post' ); ?>>    

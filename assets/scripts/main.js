@@ -75,3 +75,9 @@
   $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+jQuery(document).ready(function () {
+    jQuery(".various").fancybox({
+        type: "iframe", //<--added
+    });
+  });

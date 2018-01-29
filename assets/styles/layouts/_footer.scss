@@ -4,20 +4,19 @@
 */	
 	.push { margin-top: 40px; } // footer
 
-	.main-site-footer{
+	.main-site-footer {
 		position:	relative;
 		margin-top: (-$footer-push);
 		height: $footer-push;
 		clear:	both;
 		background-color: #000;
 		overflow: hidden;
-	}
-	.main-site-footer p{
 		color: #fff;
 		text-align: center;
+		font-size: 12px;
 	}
-	.main-site-footer .container{
-		padding:15px 0 !important;
+	.main-site-footer .container {
+		padding: 15px 0 !important;
 	} 
 	.main-site-footer p{
 		margin: 0 !important;

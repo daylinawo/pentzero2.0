@@ -8,14 +8,15 @@
   "private": true,
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-alpha.6",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "fancybox": "^3.2.5"
   },
-    "overrides": {
-      "components-font-awesome": {
-    "main": [
-      "./scss/font-awesome.scss",
-      "./fonts/*"
-    ]
+  "overrides": {
+    "components-font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./fonts/*"
+      ]
     }
   }
 }

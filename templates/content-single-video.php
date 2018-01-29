@@ -22,7 +22,6 @@
               <div class="p-header__wrapper">
                 <div class="p-header__content">
                   <h2 class="p-header__title"><?php the_title(); ?></h2>
-                  <h3 class="p-header__views">234,281 views</h3>
                   <?php get_template_part('templates/entry-meta'); ?>
                   <div class="clear"></div>
                   <?php echo do_shortcode('[ssba]'); ?> 

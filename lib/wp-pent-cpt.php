@@ -7,7 +7,7 @@
 * Author URI: http:\\pentzero.com
 * Version: 0.0.1
 * License: GPLv2
-*/
+
 
 if(! defined( 'ABSPATH' )){
 	exit;
@@ -15,7 +15,7 @@ if(! defined( 'ABSPATH' )){
 
     function pent_custom_post_type(){
 
-/* VIDEOS CPT */     
+     
       $labels = array(
         'name' => 'Videos',
         'singular_name' => 'Video',
@@ -52,7 +52,6 @@ if(! defined( 'ABSPATH' )){
       );
       register_post_type('videos', $args);
 
-/* GALLERY CPT */
         $labels = array(
         'name' => 'Galleries',
         'singular_name' => 'Gallery',
@@ -93,3 +92,4 @@ if(! defined( 'ABSPATH' )){
   }
 
   add_action('init','pent_custom_post_type');
+*/
